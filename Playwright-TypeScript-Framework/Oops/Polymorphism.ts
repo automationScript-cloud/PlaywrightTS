@@ -59,7 +59,7 @@ export class Dog extends Animal {
     }
 
     sleep() {
-        console.log("Dog is sleeping on the road and street");
+        console.log("Dog is sleeping on the road and human house");
     }
 
     climb() {
