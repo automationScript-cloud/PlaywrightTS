@@ -1,0 +1,227 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: ProductTestCases.spec.ts >> Verify_Create_And_Edit_Product
+- Location: tests\ProductTestCases.spec.ts:41:1
+
+# Error details
+
+```
+Error: locator.click: Target page, context or browser has been closed
+```
+
+```
+Error: locator.hover: Target page, context or browser has been closed
+```
+
+# Test source
+
+```ts
+  73  |      * @param element 
+  74  |      * @param value 
+  75  |      */
+  76  |     async enterText(element: Locator, value: string): Promise<void> {
+  77  |         await element.fill(value);
+  78  |     }
+  79  | 
+  80  |     /**
+  81  |      * It is used to forcefully type text in input field
+  82  |      * @param locator 
+  83  |      * @param text 
+  84  |      */
+  85  |     async type(locator: Locator, text: string): Promise<void> {
+  86  |         await locator.type(text);
+  87  |     }
+  88  | 
+  89  |     /**
+  90  |      * It is used to enter text in input field by sequentially
+  91  |      * @param element 
+  92  |      * @param value 
+  93  |      */
+  94  |     async typeSequentially(element: Locator, value: string): Promise<void> {
+  95  |         await element.pressSequentially(value);
+  96  |     }
+  97  | 
+  98  |     /**
+  99  |      * It is used to clear current text in input field
+  100 |      * @param element 
+  101 |      */
+  102 |     async clearText(element: Locator): Promise<void> {
+  103 |         await element.clear();
+  104 |     }
+  105 | 
+  106 |     /**
+  107 |      * It is used to get current value from input field
+  108 |      * @param element 
+  109 |      * @returns value 
+  110 |      */
+  111 |     async inputValue(element: Locator): Promise<string> {
+  112 |         return await element.inputValue();
+  113 |     }
+  114 | 
+  115 |     /**
+  116 |      * It is used to get value attribute of an element
+  117 |      * @param element 
+  118 |      * @returns value
+  119 |      */
+  120 |     async getAttribute(element: Locator): Promise<string | null> {
+  121 |         return await element.getAttribute("value");
+  122 |     }
+  123 | 
+  124 |     /**
+  125 |      * It is used to get input value of an element by JS property
+  126 |      * @param element 
+  127 |      * @returns 
+  128 |      */
+  129 | 
+  130 |     async getInputValueJS(element: Locator): Promise<string | null> {
+  131 |         return await element.evaluate((el: any) => el.value);
+  132 |     }
+  133 | 
+  134 |     /**
+  135 |      * It is used to get visible text on the UI
+  136 |      * @param element 
+  137 |      * @returns visibleText
+  138 |      */
+  139 |     async getVisibleText(element: Locator): Promise<string> {
+  140 |         return await element.innerText();
+  141 |     }
+  142 | 
+  143 |     /**
+  144 |      * It is used to get all element texts
+  145 |      * @param element 
+  146 |      * @returns text array
+  147 |      */
+  148 |     async getAllTexts(element: Locator): Promise<string[]> {
+  149 |         return await element.allTextContents();
+  150 |     }
+  151 | 
+  152 |     /**
+  153 |      * It is used to check the checkbox
+  154 |      * @param element 
+  155 |      */
+  156 |     async check(element: Locator): Promise<void> {
+  157 |         await element.check();
+  158 |     }
+  159 | 
+  160 |     /**
+  161 |      * It is used to uncheck the checkbox
+  162 |      * @param element 
+  163 |      */
+  164 |     async unCheck(element: Locator): Promise<void> {
+  165 |         await element.uncheck();
+  166 |     }
+  167 | 
+  168 |     /**
+  169 |      * It is used to hover on the element
+  170 |      * @param element 
+  171 |      */
+  172 |     async hover(element: Locator): Promise<void> {
+> 173 |         await element.hover();
+      |                       ^ Error: locator.hover: Target page, context or browser has been closed
+  174 |     }
+  175 | 
+  176 |     /**
+  177 |      * It is used to drag and drop element from source to target
+  178 |      * @param source
+  179 |      * @param target 
+  180 |      */
+  181 |     async dragAndDrop(source: Locator, target: Locator): Promise<void> {
+  182 |         await source.dragTo(target);
+  183 |     }
+  184 | 
+  185 |     /**
+  186 |      * It is used to scroll element into view
+  187 |      * @param element 
+  188 |      */
+  189 |     async scrollIntoView(element: Locator): Promise<void> {
+  190 |         await element.scrollIntoViewIfNeeded();
+  191 |     }
+  192 | 
+  193 |     /**
+  194 |      * It is used to double click on element
+  195 |      * @param element 
+  196 |      */
+  197 |     async dblClick(element: Locator): Promise<void> {
+  198 |         await element.dblclick();
+  199 |     }
+  200 | 
+  201 |     /**
+  202 |      * It is used to right click on element
+  203 |      * @param element 
+  204 |      */
+  205 |     async rightClick(element: Locator): Promise<void> {
+  206 |         await element.click({ button: 'right' });
+  207 |     }
+  208 | 
+  209 |     /**
+  210 |      * It is used to select option by label value
+  211 |      * @param element 
+  212 |      * @param labelValue 
+  213 |      */
+  214 |     async selectOptionByLabel(element: Locator, labelValue: string): Promise<void> {
+  215 |         await element.selectOption({ label: labelValue });
+  216 |     }
+  217 | 
+  218 |     /**
+  219 |      * It is used to select option by value attribute
+  220 |      * @param element 
+  221 |      * @param valueAttValue 
+  222 |      */
+  223 |     async selectOptionByValue(element: Locator, valueAttValue: string): Promise<void> {
+  224 |         await element.selectOption({ value: valueAttValue });
+  225 |     }
+  226 | 
+  227 |     /**
+  228 |      * It is used to select option by index number
+  229 |      * @param element 
+  230 |      * @param indexNo 
+  231 |      */
+  232 |     async selectOptionByIndex(element: Locator, indexNo: number): Promise<void> {
+  233 |         await element.selectOption({ index: indexNo });
+  234 |     }
+  235 | 
+  236 |     /**
+  237 |      * It is used to take full page screenshot
+  238 |      * @param location 
+  239 |      */
+  240 |     async takeFullPageScreenshot(location: string): Promise<void> {
+  241 |         await this.page.screenshot({ path: location, fullPage: true });
+  242 |     }
+  243 | 
+  244 |     /**
+  245 |      * It is used to take visible page screenshot only
+  246 |      * @param location 
+  247 |      */
+  248 |     async takeVisiblePageScreenshot(location: string): Promise<void> {
+  249 |         await this.page.screenshot({ path: location, fullPage: false });
+  250 |     }
+  251 | 
+  252 |     /**
+  253 |      * It is used to take screenshot of specific element
+  254 |      * @param element 
+  255 |      * @param location 
+  256 |      */
+  257 |     async takeSpecificElementScreenshot(element: Locator, location: string): Promise<void> {
+  258 |         await element.screenshot({ path: location });
+  259 |     }
+  260 | 
+  261 |     /**
+  262 |      * It is used to get element count
+  263 |      * @param element 
+  264 |      * @returns count
+  265 |      */
+  266 |     async getElementCount(element: Locator): Promise<number> {
+  267 |         return await element.count();
+  268 |     }
+  269 | 
+  270 |     /**
+  271 |      * It is used to click element by index
+  272 |      * @param element 
+  273 |      * @param index 
+```

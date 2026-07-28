@@ -1,0 +1,44 @@
+[
+    {
+        "label": "valid data",
+        "username": "admin",
+        "password": "admin",
+        "status":true
+    },
+    {
+        "label": "Invalid data",
+        "username": "admin45",
+        "password": "admin87",
+        "status":false
+    },
+    {
+        "label": "Invalid Username",
+        "username": "admind6t5tb",
+        "password": "admin",
+        "status":false
+    },
+    {
+        "label": "Invalid Password",
+        "username": "admin",
+        "password": "kut6admin",
+        "status":false
+    },
+    {
+        "label": "Blank Username",
+        "username": "",
+        "password": "admin",
+        "status":false
+    },
+    {
+        "label": "Blank Password",
+        "username": "admin",
+        "password": "",
+        "status":false
+    },
+    {
+        "label": "Blank Data",
+        "username": "",
+        "password": "",
+        "status":false
+    }
+]

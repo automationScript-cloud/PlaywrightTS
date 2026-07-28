@@ -1,0 +1,53 @@
+import { Page, Locator } from "@playwright/test";
+import { BasePage } from "../utils/BasePage.ts";
+
+export class HomePage extends BasePage {
+    private leadsModule: Locator;
+    private contactsModule: Locator;
+    private organizationsModule: Locator;
+    private productsModule: Locator;
+    private administratorImg1: Locator;
+    private signOut: Locator;
+
+    constructor(page: Page) {
+        super(page);
+        this.leadsModule = page.locator("//a[text()='Leads']");
+        this.contactsModule = page.locator("//a[text()='Contacts']");
+        this.organizationsModule = page.locator("//a[text()='Organizations']");
+        this.productsModule = page.locator("//a[text()='Products']");
+        this.administratorImg1 = page.locator("//img[@src='themes/softed/images/user.PNG']");
+        this.signOut = page.locator("//a[text()='Sign Out']");
+
+    }
+
+    async clickOnLeadsModule() {
+        await this.click(this.leadsModule);
+    }
+
+    async clickOnContactsModule() {
+        await this.click(this.contactsModule);
+    }
+
+    async clickOnOrganizationModule() {
+        await this.click(this.organizationsModule);
+    }
+
+    async clickOnProductsModule() {
+        await this.click(this.productsModule);
+    }
+
+    async hoverOnAdministratorImg1() {
+        await this.hover(this.administratorImg1);
+    }
+
+    async clickOnSignOutButton() {
+        await this.click(this.signOut);
+    }
+
+
+
+
+
+
+
+}

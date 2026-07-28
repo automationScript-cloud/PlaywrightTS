@@ -1,0 +1,75 @@
+import { test as base ,expect} from "@playwright/test";
+import { LoginPage } from "../pages/LoginPage.ts";
+import { HomePage } from "../pages/HomePage.ts";
+import { LeadPage } from "../pages/LeadsModule/LeadsPage.ts";
+import { LeadDetailsPage } from "../pages/LeadsModule/LeadDetailsPage.ts";
+import { CreateLeadPage } from "../pages/LeadsModule/CreateLeadPage.ts";
+import { CommonPage } from "../pages/CommonPage.ts";
+import { ContactsPage } from "../pages/ContactsModule/ContactsPage.ts";
+import { ProductPage } from "../pages/ProductsModule/ProductPage.ts";
+import { CreateProductPage } from "../pages/ProductsModule/CreateProductPage.ts";
+
+type MyFixture = {
+    loginPage: LoginPage;
+    homePage: HomePage;
+    leadPage: LeadPage;
+    createLeadPage: CreateLeadPage;
+    leadDetailsPage: LeadDetailsPage;
+    commonPage: CommonPage;
+    contactPage: ContactsPage;
+    productPage: ProductPage;
+    createProductPage: CreateProductPage;
+}
+
+
+export const test = base.extend<MyFixture>({
+    loginPage: async ({ page }, use) => {
+        const loginPage = new LoginPage(page);
+        await use(loginPage);
+    },
+
+    homePage: async ({ page }, use) => {
+        const homePage = new HomePage(page);
+        await use(homePage);
+    },
+
+
+    leadPage: async ({ page }, use) => {
+        const leadPage: LeadPage = new LeadPage(page);
+        await use(leadPage);
+    },
+
+    createLeadPage: async ({ page }, use) => {
+
+        const createLeadPage: CreateLeadPage = new CreateLeadPage(page);
+        await use(createLeadPage);
+    },
+
+
+    leadDetailsPage: async ({ page }, use) => {
+        const leadDetailsPage: LeadDetailsPage = new LeadDetailsPage(page);
+        await use(leadDetailsPage);
+    },
+
+    commonPage: async ({ page }, use) => {
+        const commonPage: CommonPage = new CommonPage(page);
+        await use(commonPage);
+    },
+
+    contactPage: async ({ page }, use) => {
+        await use(new ContactsPage(page));
+    },
+
+    productPage: async ({ page }, use) => {
+        await use(new ProductPage(page));
+    },
+
+    createProductPage: async ({ page }, use) => {
+        await use(new CreateProductPage(page));
+    }
+
+}
+
+
+);
+

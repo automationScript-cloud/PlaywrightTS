@@ -1,0 +1,14 @@
+{
+    "TC002":{
+      "productName":"DELL",
+      "partNumber":"93002",
+      "productCategory":"Software",
+      "productSheet":"9",
+      "GLAccount":"301-Sales-Hardware",
+      "manufacturerValue":"AltvetPet Inc.",
+      "website":"https://www.google.com",
+      "mfr_part_no":"92055",
+      "serialNo":"7",
+      "filePath":"C:\\Users\\dell\\Downloads\\Products.csv"
+    }
+}

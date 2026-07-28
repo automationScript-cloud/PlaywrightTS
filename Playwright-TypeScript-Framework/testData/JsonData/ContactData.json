@@ -1,0 +1,19 @@
+{
+    "TC002": {
+        "title": "Mr.",
+        "firstName": "Ashutosh",
+        "lastName": "Singh",
+        "leadSource": "Existing Customer",
+        "contactsTitle": "Advertise Product",
+        "department": "IT department",
+        "email": "ravika4560@gmail.com",
+        "assistant": "HR",
+        "assistantPhoneNo": "4567897690",
+        "description": "This project is more costly for user"
+    },
+    "TC003": {
+        "lastName": "Singh",
+        "orgName": "Software Tester Organization",
+        "formatValue": "lastname"
+    }
+}
